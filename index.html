@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elecandgas</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+html, body { height: 100%; margin: 0; }
+* { box-sizing: border-box; }
+
+.anim-fade-up { opacity: 0; transform: translateY(30px); }
+.anim-fade-up.in-view { opacity: 1; transform: translateY(0); }
+.anim-fade-in { opacity: 0; }
+.anim-fade-in.in-view { opacity: 1; }
+.anim-slide-left { opacity: 0; transform: translateX(-40px); }
+.anim-slide-left.in-view { opacity: 1; transform: translateX(0); }
+.anim-slide-right { opacity: 0; transform: translateX(40px); }
+.anim-slide-right.in-view { opacity: 1; transform: translateX(0); }
+.anim-scale-in { opacity: 0; transform: scale(0.95); }
+.anim-scale-in.in-view { opacity: 1; transform: scale(1); }
+.delay-1.in-view { transition-delay: 0.1s; }
+.delay-2.in-view { transition-delay: 0.2s; }
+.delay-3.in-view { transition-delay: 0.3s; }
+.delay-4.in-view { transition-delay: 0.4s; }
+.delay-5.in-view { transition-delay: 0.5s; }
+.anim-fade-up, .anim-fade-in, .anim-slide-left, .anim-slide-right, .anim-scale-in {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%);
+}
+.accent-line {
+  width: 60px; height: 4px; border-radius: 2px;
+}
+.card-hover {
+  transition: none;
+}
+.card-hover:hover {
+  transform: none;
+  box-shadow: none;
+}
+.float-anim { animation: none; }
+.glow-btn { animation: none; }
+
+.map-container {
+  background: #1e293b;
+  border-radius: 16px;
+  overflow: hidden;
+}
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto" style="font-family: 'DM Sans', sans-serif;"><!-- NAV -->
+   <nav class="fixed top-0 left-0 w-full z-50 anim-fade-in" style="background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(234,179,8,0.15);">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #eab308, #f59e0b);"><i data-lucide="zap" style="width:22px;height:22px;color:#0f172a;stroke-width:2.5;"></i>
+      </div><span id="nav-name" class="text-xl font-bold" style="font-family:'Outfit',sans-serif;color:#eab308;">Elecandgas</span>
+     </div>
+     <div class="hidden md:flex items-center gap-8"><a href="#services" class="text-sm font-medium" style="color:#94a3b8;" onmouseover="this.style.color='#eab308'" onmouseout="this.style.color='#94a3b8'">Services</a> <a href="#area" class="text-sm font-medium" style="color:#94a3b8;" onmouseover="this.style.color='#eab308'" onmouseout="this.style.color='#94a3b8'">Service Area</a> <a href="#reviews" class="text-sm font-medium" style="color:#94a3b8;" onmouseover="this.style.color='#eab308'" onmouseout="this.style.color='#94a3b8'">Reviews</a> <a href="#contact" class="px-5 py-2 rounded-full text-sm font-semibold" style="background:#eab308;color:#0f172a;">Get In Touch</a>
+     </div>
+    </div>
+   </nav><!-- HERO -->
+   <section class="hero-gradient w-full relative" style="padding-top: 120px; padding-bottom: 100px;">
+    <div class="absolute inset-0 overflow-hidden" style="pointer-events:none;">
+     <div class="absolute" style="top:10%;left:5%;width:300px;height:300px;background:radial-gradient(circle,rgba(234,179,8,0.08),transparent 70%);"></div>
+     <div class="absolute" style="bottom:10%;right:5%;width:400px;height:400px;background:radial-gradient(circle,rgba(234,179,8,0.05),transparent 70%);"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+     <div class="flex flex-col lg:flex-row items-center gap-12">
+      <div class="flex-1 text-center lg:text-left">
+       <div class="anim-fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.25);"><span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;"></span> <span class="text-xs font-medium" style="color:#eab308;">Available Now — Serving the Reading Area</span>
+       </div>
+       <h1 id="hero-title" class="anim-fade-up delay-1 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6" style="font-family:'Outfit',sans-serif;color:#f8fafc;">Trusted Electrical<br>
+         &amp; Gas Services</h1>
+       <p id="hero-tagline" class="anim-fade-up delay-2 text-lg md:text-xl mb-8" style="color:#94a3b8;max-width:520px;">Professional installations, repairs, and certifications delivered with exceptional quality. Your safety is our priority.</p>
+       <div class="anim-fade-up delay-3 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"><a href="#contact" class="glow-btn inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold" style="background:linear-gradient(135deg,#eab308,#f59e0b);color:#0f172a;"> <i data-lucide="phone" style="width:18px;height:18px;"></i> <span id="hero-phone">01234 567 890</span> </a> <a href="#services" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold" style="border:2px solid rgba(234,179,8,0.3);color:#eab308;"> Our Services <i data-lucide="arrow-down" style="width:16px;height:16px;"></i> </a>
+       </div>
+      </div>
+      <div class="flex-1 anim-slide-right delay-2 hidden lg:flex justify-center">
+       <div class="float-anim relative" style="width:320px;height:320px;">
+        <div class="absolute inset-0 rounded-3xl" style="background:linear-gradient(135deg,rgba(234,179,8,0.15),rgba(234,179,8,0.03));border:1px solid rgba(234,179,8,0.2);"></div>
+        <div class="absolute inset-0 flex flex-col items-center justify-center gap-4">
+         <svg width="100" height="100" viewbox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="45" stroke="#eab308" stroke-width="2" opacity="0.3" /> <path d="M45 25 L55 50 L45 50 L55 75" stroke="#eab308" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="30" cy="70" r="3" fill="#f59e0b" opacity="0.6" /> <circle cx="75" cy="35" r="2" fill="#eab308" opacity="0.4" />
+         </svg>
+         <div class="text-center">
+          <div class="text-3xl font-extrabold" style="font-family:'Outfit',sans-serif;color:#eab308;">
+           10+
+          </div>
+          <div class="text-sm font-medium" style="color:#94a3b8;">
+           Years Experience
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- SERVICES -->
+   <section id="services" class="w-full" style="background:#0f172a;padding:80px 0;">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="text-center mb-14 anim-fade-up">
+      <div class="accent-line mx-auto mb-4" style="background:#eab308;"></div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-3" style="font-family:'Outfit',sans-serif;color:#f8fafc;">What We Do</h2>
+      <p class="text-base" style="color:#64748b;">Comprehensive electrical and gas solutions for your home</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card-hover anim-fade-up delay-1 rounded-2xl p-8" style="background:#1e293b;border:1px solid rgba(234,179,8,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5" style="background:rgba(234,179,8,0.1);">
+        <i data-lucide="zap" style="width:28px;height:28px;color:#eab308;"></i>
+       </div>
+       <h3 class="text-xl font-bold mb-3" style="font-family:'Outfit',sans-serif;color:#f8fafc;">Electrical Work</h3>
+       <p class="text-sm leading-relaxed" style="color:#94a3b8;">Full rewires, consumer unit upgrades, fault finding, lighting installations, and EICR certifications.</p>
+      </div>
+      <div class="card-hover anim-fade-up delay-2 rounded-2xl p-8" style="background:#1e293b;border:1px solid rgba(234,179,8,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5" style="background:rgba(234,179,8,0.1);">
+        <i data-lucide="flame" style="width:28px;height:28px;color:#eab308;"></i>
+       </div>
+       <h3 class="text-xl font-bold mb-3" style="font-family:'Outfit',sans-serif;color:#f8fafc;">Gas Services</h3>
+       <p class="text-sm leading-relaxed" style="color:#94a3b8;">Boiler installations, servicing &amp; repairs, gas safety inspections, central heating systems, and landlord certificates.</p>
+      </div>
+      <div class="card-hover anim-fade-up delay-3 rounded-2xl p-8" style="background:#1e293b;border:1px solid rgba(234,179,8,0.1);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-5" style="background:rgba(234,179,8,0.1);">
+        <i data-lucide="shield-check" style="width:28px;height:28px;color:#eab308;"></i>
+       </div>
+       <h3 class="text-xl font-bold mb-3" style="font-family:'Outfit',sans-serif;color:#f8fafc;">Insulation</h3>
+       <p class="text-sm leading-relaxed" style="color:#94a3b8;">Loft insulation, cavity wall insulation, and energy-efficient upgrades to lower your bills and keep you warm.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- SERVICE AREA MAP -->
+   <section id="area" class="w-full" style="background:#1e293b;padding:80px 0;">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="text-center mb-14 anim-fade-up">
+      <div class="accent-line mx-auto mb-4" style="background:#eab308;"></div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-3" style="font-family:'Outfit',sans-serif;color:#f8fafc;">Our Service Area</h2>
+      <p class="text-base" style="color:#64748b;">Based near Reading — covering a wide radius across Southern England</p>
+     </div>
+     <div class="flex flex-col lg:flex-row items-center gap-10">
+      <div class="flex-1 w-full anim-slide-left delay-1">
+       <div class="map-container p-6" style="border:1px solid rgba(234,179,8,0.15);">
+        <svg viewbox="0 0 500 400" width="100%" style="max-width:500px;margin:0 auto;display:block;"><!-- Simplified southern England outline --> <path d="M80,50 L150,30 L220,25 L300,35 L370,20 L430,40 L460,80 L470,130 L480,180 L460,230 L440,270 L400,310 L350,340 L300,360 L240,370 L180,360 L130,340 L90,300 L60,260 L40,210 L30,160 L40,110 L60,70 Z" fill="#0f172a" stroke="rgba(234,179,8,0.2)" stroke-width="1.5" /> <!-- Service radius circle --> <circle cx="290" cy="180" r="120" fill="rgba(234,179,8,0.06)" stroke="rgba(234,179,8,0.2)" stroke-width="1" stroke-dasharray="6,4" /> <circle cx="290" cy="180" r="80" fill="rgba(234,179,8,0.08)" stroke="rgba(234,179,8,0.15)" stroke-width="1" stroke-dasharray="4,4" /> <!-- Reading - HQ --> <circle cx="290" cy="180" r="8" fill="#eab308" /> <circle cx="290" cy="180" r="14" fill="none" stroke="#eab308" stroke-width="1.5" opacity="0.5" /> <text x="290" y="165" text-anchor="middle" fill="#eab308" font-size="11" font-weight="700" font-family="Outfit,sans-serif">
+          READING
+         </text> <text x="290" y="205" text-anchor="middle" fill="#64748b" font-size="8" font-family="DM Sans,sans-serif">
+          ⚡ HQ
+         </text> <!-- London --> <circle cx="340" cy="145" r="5" fill="#f59e0b" opacity="0.7" /> <text x="340" y="135" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="DM Sans,sans-serif">
+          London
+         </text> <!-- Oxford --> <circle cx="240" cy="155" r="5" fill="#f59e0b" opacity="0.7" /> <text x="240" y="145" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="DM Sans,sans-serif">
+          Oxford
+         </text> <!-- Swindon --> <circle cx="205" cy="190" r="5" fill="#f59e0b" opacity="0.7" /> <text x="205" y="180" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="DM Sans,sans-serif">
+          Swindon
+         </text> <!-- Southampton --> <circle cx="265" cy="265" r="5" fill="#f59e0b" opacity="0.7" /> <text x="265" y="255" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="DM Sans,sans-serif">
+          Southampton
+         </text> <!-- Bristol --> <circle cx="160" cy="210" r="5" fill="#f59e0b" opacity="0.7" /> <text x="160" y="200" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="DM Sans,sans-serif">
+          Bristol
+         </text> <!-- Milton Keynes --> <circle cx="295" cy="115" r="5" fill="#f59e0b" opacity="0.7" /> <text x="295" y="105" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="DM Sans,sans-serif">
+          Milton Keynes
+         </text> <!-- Guildford --> <circle cx="330" cy="210" r="5" fill="#f59e0b" opacity="0.7" /> <text x="330" y="225" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="DM Sans,sans-serif">
+          Guildford
+         </text> <!-- Brighton --> <circle cx="350" cy="280" r="5" fill="#f59e0b" opacity="0.7" /> <text x="350" y="295" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="DM Sans,sans-serif">
+          Brighton
+         </text>
+        </svg>
+       </div>
+      </div>
+      <div class="flex-1 w-full">
+       <div class="space-y-5">
+        <div class="anim-slide-right delay-1 flex items-start gap-4 p-5 rounded-xl" style="background:rgba(234,179,8,0.05);border:1px solid rgba(234,179,8,0.1);">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(234,179,8,0.15);">
+          <i data-lucide="map-pin" style="width:20px;height:20px;color:#eab308;"></i>
+         </div>
+         <div>
+          <h4 class="font-bold mb-1" style="color:#f8fafc;">Based Near Reading</h4>
+          <p class="text-sm" style="color:#94a3b8;">Our home base, covering Berkshire and surrounding counties</p>
+         </div>
+        </div>
+        <div class="anim-slide-right delay-2 flex items-start gap-4 p-5 rounded-xl" style="background:rgba(234,179,8,0.05);border:1px solid rgba(234,179,8,0.1);">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(234,179,8,0.15);">
+          <i data-lucide="compass" style="width:20px;height:20px;color:#eab308;"></i>
+         </div>
+         <div>
+          <h4 class="font-bold mb-1" style="color:#f8fafc;">Wide Coverage</h4>
+          <p class="text-sm" style="color:#94a3b8;">London, Oxford, Bristol, Southampton, Brighton, and everywhere in between</p>
+         </div>
+        </div>
+        <div class="anim-slide-right delay-3 flex items-start gap-4 p-5 rounded-xl" style="background:rgba(234,179,8,0.05);border:1px solid rgba(234,179,8,0.1);">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(234,179,8,0.15);">
+          <i data-lucide="clock" style="width:20px;height:20px;color:#eab308;"></i>
+         </div>
+         <div>
+          <h4 class="font-bold mb-1" style="color:#f8fafc;">Fast Response</h4>
+          <p class="text-sm" style="color:#94a3b8;">Quick turnaround on quotes and appointments across our full service area</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- REVIEWS -->
+   <section id="reviews" class="w-full" style="background:#0f172a;padding:80px 0;">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="text-center mb-14 anim-fade-up">
+      <div class="accent-line mx-auto mb-4" style="background:#eab308;"></div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-3" style="font-family:'Outfit',sans-serif;color:#f8fafc;">What Our Customers Say</h2>
+      <p class="text-base" style="color:#64748b;">Rated 5 stars across the board</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6"><!-- Review 1 -->
+      <div class="card-hover anim-fade-up delay-1 rounded-2xl p-7" style="background:#1e293b;border:1px solid rgba(234,179,8,0.1);">
+       <div class="flex gap-1 mb-4">
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+       </div>
+       <p class="text-sm leading-relaxed mb-5" style="color:#cbd5e1;">"Very high quality work throughout. Had our full loft insulation done and the difference is night and day — the house stays so much warmer now. Incredibly professional and tidy, would highly recommend Elecandgas to anyone."</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm" style="background:rgba(234,179,8,0.15);color:#eab308;">
+         JT
+        </div>
+        <div>
+         <div class="font-semibold text-sm" style="color:#f8fafc;">
+          James T.
+         </div>
+         <div class="text-xs" style="color:#64748b;">
+          Reading, Berkshire
+         </div>
+        </div>
+       </div>
+      </div><!-- Review 2 -->
+      <div class="card-hover anim-fade-up delay-2 rounded-2xl p-7" style="background:#1e293b;border:1px solid rgba(234,179,8,0.1);">
+       <div class="flex gap-1 mb-4">
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+       </div>
+       <p class="text-sm leading-relaxed mb-5" style="color:#cbd5e1;">"Brilliant service from start to finish. Had a new boiler installed and the whole process was seamless. The engineer explained everything clearly, left the place spotless, and the price was very fair. Top-notch gas work."</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm" style="background:rgba(234,179,8,0.15);color:#eab308;">
+         SP
+        </div>
+        <div>
+         <div class="font-semibold text-sm" style="color:#f8fafc;">
+          Sarah P.
+         </div>
+         <div class="text-xs" style="color:#64748b;">
+          Oxford, Oxfordshire
+         </div>
+        </div>
+       </div>
+      </div><!-- Review 3 -->
+      <div class="card-hover anim-fade-up delay-3 rounded-2xl p-7" style="background:#1e293b;border:1px solid rgba(234,179,8,0.1);">
+       <div class="flex gap-1 mb-4">
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+        <svg width="20" height="20" viewbox="0 0 20 20" fill="#eab308">
+         <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" />
+        </svg>
+       </div>
+       <p class="text-sm leading-relaxed mb-5" style="color:#cbd5e1;">"Called Elecandgas for an emergency electrical fault and they were out within hours. Found the issue quickly, rewired the problem area, and gave us a full safety certificate. Absolute lifesavers — wouldn't use anyone else!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm" style="background:rgba(234,179,8,0.15);color:#eab308;">
+         MK
+        </div>
+        <div>
+         <div class="font-semibold text-sm" style="color:#f8fafc;">
+          Mark K.
+         </div>
+         <div class="text-xs" style="color:#64748b;">
+          Guildford, Surrey
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- CONTACT -->
+   <section id="contact" class="w-full" style="background:#1e293b;padding:80px 0;">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+     <div class="accent-line mx-auto mb-4 anim-fade-up" style="background:#eab308;"></div>
+     <h2 class="text-3xl md:text-4xl font-bold mb-3 anim-fade-up delay-1" style="font-family:'Outfit',sans-serif;color:#f8fafc;">Get In Touch</h2>
+     <p class="text-base mb-10 anim-fade-up delay-2" style="color:#64748b;">We're available by phone and email — reach out for a free, no-obligation quote</p>
+     <div class="flex flex-col sm:flex-row gap-6 justify-center">
+      <div class="card-hover anim-slide-left delay-3 flex items-center gap-4 px-8 py-6 rounded-2xl" style="background:#0f172a;border:1px solid rgba(234,179,8,0.15);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#eab308,#f59e0b);"><i data-lucide="phone" style="width:26px;height:26px;color:#0f172a;"></i>
+       </div>
+       <div class="text-left">
+        <div class="text-xs font-medium mb-1" style="color:#64748b;">
+         Call Us
+        </div>
+        <div id="contact-phone" class="text-lg font-bold" style="color:#f8fafc;">
+         01234 567 890
+        </div>
+       </div>
+      </div>
+      <div class="card-hover anim-slide-right delay-3 flex items-center gap-4 px-8 py-6 rounded-2xl" style="background:#0f172a;border:1px solid rgba(234,179,8,0.15);">
+       <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#eab308,#f59e0b);"><i data-lucide="mail" style="width:26px;height:26px;color:#0f172a;"></i>
+       </div>
+       <div class="text-left">
+        <div class="text-xs font-medium mb-1" style="color:#64748b;">
+         Email Us
+        </div>
+        <div id="contact-email" class="text-lg font-bold" style="color:#f8fafc;">
+         info@elecandgas.co.uk
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- FOOTER -->
+   <footer class="w-full" style="background:#0f172a;border-top:1px solid rgba(234,179,8,0.1);padding:30px 0;">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+     <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-md flex items-center justify-center" style="background:linear-gradient(135deg,#eab308,#f59e0b);">
+       <i data-lucide="zap" style="width:16px;height:16px;color:#0f172a;stroke-width:2.5;"></i>
+      </div><span id="footer-name" class="text-sm font-bold" style="font-family:'Outfit',sans-serif;color:#eab308;">Elecandgas</span>
+     </div>
+     <p class="text-xs" style="color:#475569;">© 2026 Elecandgas. All rights reserved.</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+const defaultConfig = {
+  business_name: 'Elec and Gas',
+  hero_tagline: 'Trusted Electrical & Gas Services',
+  phone_number: '+44 7861314414',
+  email_address: 'laeeq@elecandgas.com',
+  background_color: '#0f172a',
+  surface_color: '#1e293b',
+  text_color: '#f8fafc',
+  accent_color: '#eab308',
+  muted_color: '#94a3b8',
+  font_family: 'Outfit',
+  font_size: 16
+};
+
+function applyConfig(config) {
+  const c = key => config[key] || defaultConfig[key];
+
+  // Text content
+  document.getElementById('nav-name').textContent = c('business_name');
+  document.getElementById('footer-name').textContent = c('business_name');
+  document.getElementById('hero-title').innerHTML = c('hero_tagline').replace('&', '<br>&');
+  document.getElementById('hero-phone').textContent = c('phone_number');
+  document.getElementById('contact-phone').textContent = c('phone_number');
+  document.getElementById('contact-email').textContent = c('email_address');
+
+  // Colors
+  const bg = c('background_color');
+  const surface = c('surface_color');
+  const text = c('text_color');
+  const accent = c('accent_color');
+  const muted = c('muted_color');
+
+  document.getElementById('app-wrapper').style.background = bg;
+
+  document.querySelectorAll('.accent-line').forEach(el => el.style.background = accent);
+
+  // Font
+  const font = c('font_family');
+  const baseStack = 'DM Sans, sans-serif';
+  document.querySelectorAll('h1,h2,h3,h4').forEach(el => {
+    el.style.fontFamily = `${font}, ${baseStack}`;
+  });
+
+  // Font size
+  const size = c('font_size');
+  document.querySelectorAll('p').forEach(el => {
+    el.style.fontSize = `${size}px`;
+  });
+}
+
+// Apply default config on load
+applyConfig(defaultConfig);
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Scroll-triggered animations
+function initAnimations() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[class*="anim-"]').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAnimations);
+} else {
+  initAnimations();
+}
+
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e99d26fd53c71ed',t:'MTc3NTc0MDk2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
